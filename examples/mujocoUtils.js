@@ -28,9 +28,9 @@ export function setupGUI(parentContext) {
   let reload = reloadFunc.bind(parentContext);
   parentContext.gui.add(parentContext.params, 'scene', {
     // "Humanoid": "humanoid.xml",
-    "Elbow": "myosuite/myo_elbow_1dof6muscles.xml",
-    "motor_finger_v0": "myosuite/motor_finger_v0.xml",
+    // "Elbow": "myosuite/myo_elbow_1dof6muscles.xml",
     "myo_finger_v0": "myosuite/myo_finger_v0.xml",
+    "motor_finger_v0": "myosuite/motor_finger_v0.xml",
     "finger_v0": "myosuite/finger_v0.xml",
     // "Cassie": "agility_cassie/scene.xml",
     // "Hammock": "hammock.xml", "Balloons": "balloons.xml", "Hand": "shadow_hand/scene_right.xml",
