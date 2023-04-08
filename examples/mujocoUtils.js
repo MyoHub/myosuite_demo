@@ -525,7 +525,7 @@ export async function downloadExampleScenesFolder(mujoco) {
     "myosuite/Geometry/ground_r_clavicle.stl",
     "myosuite/Geometry/ground_r_scapula.stl",
     "myosuite/Geometry/arm_r_humerus.stl",
-    "myosuite/Geomety/rm_r_ulna.stl",
+    "myosuite/Geometry/rm_r_ulna.stl",
     "myosuite/Geometry/arm_r_radius.stl",
     "myosuite/Geometry/arm_r_lunate.stl",
     "myosuite/Geometry/arm_r_scaphoid.stl",
