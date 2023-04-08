@@ -27,9 +27,11 @@ export function setupGUI(parentContext) {
   // Add scene selection dropdown.
   let reload = reloadFunc.bind(parentContext);
   parentContext.gui.add(parentContext.params, 'scene', {
-    "Humanoid": "humanoid.xml", "Cassie": "agility_cassie/scene.xml",
-    "Hammock": "hammock.xml", "Balloons": "balloons.xml", "Hand": "shadow_hand/scene_right.xml",
-    "Flag": "flag.xml", "Mug": "mug.xml"
+    "Humanoid": "humanoid.xml",
+    "Elbow": "myosuite/myo_elbow_1dof6muscles.xml",
+    // "Cassie": "agility_cassie/scene.xml",
+    // "Hammock": "hammock.xml", "Balloons": "balloons.xml", "Hand": "shadow_hand/scene_right.xml",
+    // "Flag": "flag.xml", "Mug": "mug.xml"
   }).name('Example Scene').onChange(reload);
 
   // Add a help menu.
@@ -243,7 +245,7 @@ export function setupGUI(parentContext) {
       // TODO: Use free camera parameters from MuJoCo
       parentContext.camera.position.set(2.0, 1.7, 1.7);
       parentContext.controls.target.set(0, 0.7, 0);
-      parentContext.controls.update(); 
+      parentContext.controls.update();
       event.preventDefault();
     }
   });
@@ -268,7 +270,7 @@ export async function loadSceneFromURL(mujoco, filename, parent) {
     let model = parent.model;
     let state = parent.state;
     let simulation = parent.simulation;
-  
+
     // Decode the null-terminated string names.
     let textDecoder = new TextDecoder("utf-8");
     let fullString = textDecoder.decode(model.names);
@@ -612,4 +614,3 @@ export function toMujocoPos(target) { return target.set(target.x, -target.z, tar
 export function standardNormal() {
   return Math.sqrt(-2.0 * Math.log( Math.random())) *
          Math.cos ( 2.0 * Math.PI * Math.random()); }
-
