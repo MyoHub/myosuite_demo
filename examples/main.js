@@ -10,8 +10,8 @@ import   load_mujoco        from '../dist/mujoco_wasm.js';
 const mujoco = await load_mujoco();
 
 // Set up Emscripten's Virtual File System
-// var initialScene = "humanoid.xml";
-var initialScene = "myosuite/myo_finger_v0.xml";
+var initialScene = "humanoid.xml";
+// var initialScene = "myosuite/myo_finger_v0.xml";
 mujoco.FS.mkdir('/working');
 mujoco.FS.mount(mujoco.MEMFS, { root: '.' }, '/working');
 mujoco.FS.writeFile("/working/" + initialScene, await(await fetch("./examples/scenes/" + initialScene)).text());
