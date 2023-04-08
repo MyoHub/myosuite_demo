@@ -27,7 +27,7 @@ export function setupGUI(parentContext) {
   // Add scene selection dropdown.
   let reload = reloadFunc.bind(parentContext);
   parentContext.gui.add(parentContext.params, 'scene', {
-    "Humanoid": "humanoid.xml",
+    // "Humanoid": "humanoid.xml",
     "Elbow": "myosuite/myo_elbow_1dof6muscles.xml",
     "motor_finger_v0": "myosuite/motor_finger_v0.xml",
     "myo_finger_v0": "myosuite/myo_finger_v0.xml",
