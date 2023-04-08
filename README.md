@@ -1,3 +1,17 @@
+# MyoSuite DEMO
+
+MacOs
+1. Install emscripten
+
+```
+brew install emscripten
+```
+
+2. Build the mujoco_wasm Binary
+
+------------
+FORKED FROM [Mujoco_wasm](https://github.com/stillonearth/MuJoCo-WASM) form  [zalo](https://github.com/zalo/mujoco_wasm)
+
 <p align="center">
   <a href="https://zalo.github.io/mujoco_wasm/"><img src="./examples/MuJoCoWasmLogo.png" href></a>
 </p>
