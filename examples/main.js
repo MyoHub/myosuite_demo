@@ -10,10 +10,12 @@ import   load_mujoco        from '../dist/mujoco_wasm.js';
 const mujoco = await load_mujoco();
 
 // Set up Emscripten's Virtual File System
-var initialScene = "humanoid.xml";
+// var initialScene = "humanoid.xml";
+var initialScene = "myo_elbow_1dof6muscles.xml";
 mujoco.FS.mkdir('/working');
 mujoco.FS.mount(mujoco.MEMFS, { root: '.' }, '/working');
-mujoco.FS.writeFile("/working/" + initialScene, await(await fetch("./examples/scenes/" + initialScene)).text());
+// mujoco.FS.writeFile("/working/" + initialScene, await(await fetch("./examples/scenes/" + initialScene)).text());
+mujoco.FS.writeFile("/working/" + initialScene, await(await fetch("./examples/myosuite/" + initialScene)).text());
 
 export class MuJoCoDemo {
   constructor() {
@@ -79,7 +81,7 @@ export class MuJoCoDemo {
     await downloadExampleScenesFolder(mujoco);
 
     // Initialize the three.js Scene using the .xml Model in initialScene
-    [this.model, this.state, this.simulation, this.bodies, this.lights] =  
+    [this.model, this.state, this.simulation, this.bodies, this.lights] =
       await loadSceneFromURL(mujoco, initialScene, this);
 
     this.gui = new GUI();
