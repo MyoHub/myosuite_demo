@@ -517,6 +517,7 @@ export async function downloadExampleScenesFolder(mujoco) {
     "agility_cassie/assets/tarsus.obj",
     "agility_cassie/cassie.xml",
     "agility_cassie/scene.xml",
+    "myosuite/myo_elbow_1dof6muscles.xml",
     "arm26.xml",
     "balloons.xml",
     "flag.xml",
