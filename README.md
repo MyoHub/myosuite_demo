@@ -8,6 +8,14 @@ brew install emscripten
 ```
 
 2. Build the mujoco_wasm Binary
+On Linux, use:
+```bash
+mkdir build
+cd build
+emcmake cmake ..
+make
+```
+On Windows, run `build_windows.bat`.
 
 ------------
 FORKED FROM [Mujoco_wasm](https://github.com/stillonearth/MuJoCo-WASM) form  [zalo](https://github.com/zalo/mujoco_wasm)
