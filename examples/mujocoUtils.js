@@ -29,6 +29,9 @@ export function setupGUI(parentContext) {
   parentContext.gui.add(parentContext.params, 'scene', {
     "Humanoid": "humanoid.xml",
     "Elbow": "myosuite/myo_elbow_1dof6muscles.xml",
+    "motor_finger_v0": "myosuite/motor_finger_v0.xml",
+    "myo_finger_v0": "myosuite/myo_finger_v0.xml",
+    "finger_v0": "myosuite/finger_v0.xml",
     // "Cassie": "agility_cassie/scene.xml",
     // "Hammock": "hammock.xml", "Balloons": "balloons.xml", "Hand": "shadow_hand/scene_right.xml",
     // "Flag": "flag.xml", "Mug": "mug.xml"
@@ -554,6 +557,9 @@ export async function downloadExampleScenesFolder(mujoco) {
     "myosuite/Geometry/arm_r_5proxph.stl",
     "myosuite/Geometry/arm_r_5midph.stl",
     "myosuite/Geometry/arm_r_5distph.stl",
+    "myosuite/motor_finger_v0.xml",
+    "myosuite/myo_finger_v0.xml",
+    "myosuite/finger_v0.xml",
     "arm26.xml",
     "balloons.xml",
     "flag.xml",
