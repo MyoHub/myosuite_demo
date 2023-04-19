@@ -11,7 +11,7 @@ const mujoco = await load_mujoco();
 
 // Set up Emscripten's Virtual File System
 var initialScene = "humanoid.xml";
-// var initialScene = "myo_elbow_1dof6muscles.xml";
+// var initialScene = "myosuite/myo_test.xml";
 mujoco.FS.mkdir('/working');
 mujoco.FS.mount(mujoco.MEMFS, { root: '.' }, '/working');
 mujoco.FS.writeFile("/working/" + initialScene, await(await fetch("./examples/scenes/" + initialScene)).text());

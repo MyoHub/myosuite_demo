@@ -500,18 +500,11 @@ export async function loadSceneFromURL(mujoco, filename, parent) {
     return [model, state, simulation, bodies, lights]
 }
 
-// const glob = require("glob");
+// import fs from "./fs";
 
-// var getDirectories = function (src, callback) {
-//   glob(src + '/**/*', callback);
-// };
-// getDirectories('robohive', function (err, res) {
-//   if (err) {
-//     console.log('Error', err);
-//   } else {
-//     console.log(res);
-//   }
-// });
+
+// console.log(walk("myosuite/"));
+
 /** Downloads the scenes/examples folder to MuJoCo's virtual filesystem
  * @param {mujoco} mujoco */
 export async function downloadExampleScenesFolder(mujoco) {
