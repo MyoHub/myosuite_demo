@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="arm26">
+  <compiler inertiafromgeom="auto" angle="radian" balanceinertia="true" boundmass="0.001" boundinertia="0.001">
+    <lengthrange inttotal="500"></lengthrange>
+  </compiler>
+  <default>
+    <joint limited="true" damping="0.5" armature="0.01" stiffness="0"></joint>
+    <geom contype="1" conaffinity="0" condim="3" rgba="0.8 0.85 0.8 1" margin="0.001" solref=".02 1" solimp=".8 .8 .01" material="geom"></geom>
+    <site size="0.001"></site>
+    <tendon width="0.005" rgba=".95 .3 .3 1" limited="false"></tendon>
+    <default class="muscle">
+      <muscle ctrllimited="true" ctrlrange="0.001 1" scale="1" vmax="15" fvmax="1.4" timeconst="0.01 0.04"></muscle>
+    </default>
+    <default class="motor">
+      <motor gear="20"></motor>
+    </default>
+  </default>
+  <option timestep="0.002">
+    <flag energy="enable"></flag>
+  </option>
+  <size njmax="1000" nconmax="400" nuser_jnt="1"></size>
+  <visual>
+    <map fogstart="3" fogend="5" force="0.1"></map>
+    <quality shadowsize="1024"></quality>
+  </visual>
+  <worldbody>
+    <geom name="floor" pos="0 0 0" size="10 10 0.125" type="plane" material="MatPlane" condim="3"></geom>
+    <body name="base" pos="0 4.89859e-17 0.8" quat="0.7071067811865475 0.7071067811865475 0.0 0.0">
+      <light mode="trackcom" directional="false" diffuse=".8 .8 .8" specular="0.3 0.3 0.3" pos="1 1 4.0" dir="-1 -1 -4"></light>
+      <light mode="trackcom" directional="false" diffuse=".8 .8 .8" specular="0.3 0.3 0.3" pos="1 -1 4.0" dir="-1 1 -4"></light>
+      <geom name="ground_ribs" type="mesh" mesh="ground_ribs"></geom>
+
+    </body>
+    <camera name="for_testing" pos="0 0 2" euler="0 0 0"></camera>
+  </worldbody>
+  <asset>
+    <mesh name="ground_ribs" file="Geometry/ground_ribs.stl" scale="1 1 1"></mesh>
+    <!-- <mesh name="ground_ribs" file="Geometry/ground_ribs.obj" scale="1 1 1"></mesh> -->
+    <texture name="texplane" type="2d" builtin="checker" rgb1=".2 .19 .2" rgb2=".1 0.11 0.11" width="50" height="50"></texture>
+    <texture name="texgeom" type="cube" builtin="flat" mark="cross" width="127" height="1278" rgb1="0.7 0.7 0.7" rgb2="0.9 0.9 0.9" markrgb="1 1 1" random="0.01"></texture>
+    <material name="MatPlane" reflectance="0.5" texture="texplane" texrepeat="4 4" texuniform="true"></material>
+    <material name="geom" texture="texgeom" texuniform="true"></material>
+  </asset>
+
+
+</mujoco>

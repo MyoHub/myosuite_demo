@@ -27,14 +27,14 @@ export function setupGUI(parentContext) {
   // Add scene selection dropdown.
   let reload = reloadFunc.bind(parentContext);
   parentContext.gui.add(parentContext.params, 'scene', {
-    "Humanoid": "humanoid.xml",
+    "Humanoid": "humanoid.xml", "Cassie": "agility_cassie/scene.xml",
+    "MyoTest": "myosuite/myo_test.xml",
     "Elbow": "myosuite/myo_elbow_1dof6muscles.xml",
     "motor_finger_v0": "myosuite/motor_finger_v0.xml",
     "myo_finger_v0": "myosuite/myo_finger_v0.xml",
     "finger_v0": "myosuite/finger_v0.xml",
-    // "Cassie": "agility_cassie/scene.xml",
-    // "Hammock": "hammock.xml", "Balloons": "balloons.xml", "Hand": "shadow_hand/scene_right.xml",
-    // "Flag": "flag.xml", "Mug": "mug.xml"
+    "Hammock": "hammock.xml", "Balloons": "balloons.xml", "Hand": "shadow_hand/scene_right.xml",
+    "Flag": "flag.xml", "Mug": "mug.xml"
   }).name('Example Scene').onChange(reload);
 
   // Add a help menu.
@@ -339,7 +339,7 @@ export async function loadSceneFromURL(mujoco, filename, parent) {
         if (!(meshID in meshes)) {
           geometry = new THREE.BufferGeometry(); // TODO: Populate the Buffer Geometry with Generic Mesh Data
 
-          let vertex_buffer = model.mesh_vert().subarray(
+          let vertex_buffer = model.mesh_vert.subarray(
              model.mesh_vertadr[meshID] * 3,
             (model.mesh_vertadr[meshID]  + model.mesh_vertnum[meshID]) * 3);
           for (let v = 0; v < vertex_buffer.length; v+=3){
@@ -349,7 +349,7 @@ export async function loadSceneFromURL(mujoco, filename, parent) {
             vertex_buffer[v + 2] = -temp;
           }
 
-          let normal_buffer = model.mesh_normal().subarray(
+          let normal_buffer = model.mesh_normal.subarray(
              model.mesh_vertadr[meshID] * 3,
             (model.mesh_vertadr[meshID]  + model.mesh_vertnum[meshID]) * 3);
           for (let v = 0; v < normal_buffer.length; v+=3){
@@ -359,12 +359,12 @@ export async function loadSceneFromURL(mujoco, filename, parent) {
             normal_buffer[v + 2] = -temp;
           }
 
-          let uv_buffer = model.mesh_texcoord().subarray(
+          let uv_buffer = model.mesh_texcoord.subarray(
              model.mesh_texcoordadr[meshID] * 2,
             (model.mesh_texcoordadr[meshID]  + model.mesh_vertnum[meshID]) * 2);
           let triangle_buffer = model.mesh_face.subarray(
-             model.mesh_faceadr()[meshID] * 3,
-            (model.mesh_faceadr()[meshID]  + model.mesh_facenum[meshID]) * 3);
+             model.mesh_faceadr[meshID] * 3,
+            (model.mesh_faceadr[meshID]  + model.mesh_facenum[meshID]) * 3);
           geometry.setAttribute("position", new THREE.BufferAttribute(vertex_buffer, 3));
           geometry.setAttribute("normal"  , new THREE.BufferAttribute(normal_buffer, 3));
           geometry.setAttribute("uv"      , new THREE.BufferAttribute(    uv_buffer, 2));
@@ -520,7 +520,9 @@ export async function downloadExampleScenesFolder(mujoco) {
     "agility_cassie/assets/tarsus.obj",
     "agility_cassie/cassie.xml",
     "agility_cassie/scene.xml",
+
     "myosuite/myo_elbow_1dof6muscles.xml",
+    "myosuite/myo_test.xml",
     "myosuite/Geometry/ground_ribs.stl",
     "myosuite/Geometry/ground_spine.stl",
     "myosuite/Geometry/ground_skull.stl",
@@ -528,7 +530,7 @@ export async function downloadExampleScenesFolder(mujoco) {
     "myosuite/Geometry/ground_r_clavicle.stl",
     "myosuite/Geometry/ground_r_scapula.stl",
     "myosuite/Geometry/arm_r_humerus.stl",
-    "myosuite/Geometry/rm_r_ulna.stl",
+    "myosuite/Geometry/arm_r_ulna.stl",
     "myosuite/Geometry/arm_r_radius.stl",
     "myosuite/Geometry/arm_r_lunate.stl",
     "myosuite/Geometry/arm_r_scaphoid.stl",
