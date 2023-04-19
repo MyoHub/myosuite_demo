@@ -27,14 +27,16 @@ export function setupGUI(parentContext) {
   // Add scene selection dropdown.
   let reload = reloadFunc.bind(parentContext);
   parentContext.gui.add(parentContext.params, 'scene', {
-    "Humanoid": "humanoid.xml", "Cassie": "agility_cassie/scene.xml",
+    "Humanoid": "humanoid.xml",
+    // "Cassie": "agility_cassie/scene.xml",
     "MyoTest": "myosuite/myo_test.xml",
-    "Elbow": "myosuite/myo_elbow_1dof6muscles.xml",
+    // "Elbow": "myosuite/myo_elbow_1dof6muscles.xml",
     "motor_finger_v0": "myosuite/motor_finger_v0.xml",
     "myo_finger_v0": "myosuite/myo_finger_v0.xml",
     "finger_v0": "myosuite/finger_v0.xml",
-    "Hammock": "hammock.xml", "Balloons": "balloons.xml", "Hand": "shadow_hand/scene_right.xml",
-    "Flag": "flag.xml", "Mug": "mug.xml"
+    "Adroit": "robohive/Adroit_hand.xml",
+    // "Hammock": "hammock.xml", "Balloons": "balloons.xml", "Hand": "shadow_hand/scene_right.xml",
+    // "Flag": "flag.xml", "Mug": "mug.xml"
   }).name('Example Scene').onChange(reload);
 
   // Add a help menu.
@@ -498,6 +500,18 @@ export async function loadSceneFromURL(mujoco, filename, parent) {
     return [model, state, simulation, bodies, lights]
 }
 
+// const glob = require("glob");
+
+// var getDirectories = function (src, callback) {
+//   glob(src + '/**/*', callback);
+// };
+// getDirectories('robohive', function (err, res) {
+//   if (err) {
+//     console.log('Error', err);
+//   } else {
+//     console.log(res);
+//   }
+// });
 /** Downloads the scenes/examples folder to MuJoCo's virtual filesystem
  * @param {mujoco} mujoco */
 export async function downloadExampleScenesFolder(mujoco) {
@@ -562,6 +576,24 @@ export async function downloadExampleScenesFolder(mujoco) {
     "myosuite/motor_finger_v0.xml",
     "myosuite/myo_finger_v0.xml",
     "myosuite/finger_v0.xml",
+
+    "robohive/Adroit_hand.xml",
+    "robohive/resources/assets.xml",
+    "robohive/resources/joint_position_actuation.xml",
+    "robohive/resources/chain.xml",
+    "robohive/resources/meshes/F1.stl",
+    "robohive/resources/meshes/F2.stl",
+    "robohive/resources/meshes/F3.stl",
+    "robohive/resources/meshes/TH1_z.stl",
+    "robohive/resources/meshes/TH2_z.stl",
+    "robohive/resources/meshes/TH3_z.stl",
+    "robohive/resources/meshes/forearm_simple.stl",
+    "robohive/resources/meshes/forearm_simple_cvx.stl",
+    "robohive/resources/meshes/knuckle.stl",
+    "robohive/resources/meshes/lfmetacarpal.stl",
+    "robohive/resources/meshes/palm.stl",
+    "robohive/resources/meshes/wrist.stl",
+
     "arm26.xml",
     "balloons.xml",
     "flag.xml",
