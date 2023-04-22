@@ -30,7 +30,7 @@ export function setupGUI(parentContext) {
     "Humanoid": "humanoid.xml",
     // "Cassie": "agility_cassie/scene.xml",
     "MyoTest": "myosuite/myo_test.xml",
-    // "Elbow": "myosuite/myo_elbow_1dof6muscles.xml",
+    "Elbow": "myosuite/myo_elbow_1dof6muscles.xml",
     "motor_finger_v0": "myosuite/motor_finger_v0.xml",
     "myo_finger_v0": "myosuite/myo_finger_v0.xml",
     "finger_v0": "myosuite/finger_v0.xml",
@@ -459,6 +459,22 @@ export async function loadSceneFromURL(mujoco, filename, parent) {
       if (type == 4) { mesh.scale.set(size[0], size[2], size[1]) } // Stretch the Ellipsoid
     }
 
+       // Parse tendons.
+       let tendonMat = new THREE.MeshPhongMaterial();
+       tendonMat.color = new THREE.Color(0.8, 0.3, 0.3);
+       mujocoRoot.cylinders = new THREE.InstancedMesh(
+           new THREE.CylinderGeometry(1, 1, 1),
+           tendonMat, 1023);
+       mujocoRoot.cylinders.receiveShadow = true;
+       mujocoRoot.cylinders.castShadow    = true;
+       mujocoRoot.add(mujocoRoot.cylinders);
+       mujocoRoot.spheres = new THREE.InstancedMesh(
+           new THREE.SphereGeometry(1, 10, 10),
+           tendonMat, 1023);
+       mujocoRoot.spheres.receiveShadow = true;
+       mujocoRoot.spheres.castShadow    = true;
+       mujocoRoot.add(mujocoRoot.spheres);
+
     // Parse lights.
     for (let l = 0; l < model.nlight; l++) {
       let light = new THREE.SpotLight();
@@ -483,6 +499,10 @@ export async function loadSceneFromURL(mujoco, filename, parent) {
       }
       lights.push(light);
     }
+    if (model.nlight == 0) {
+      let light = new THREE.DirectionalLight();
+      mujocoRoot.add(light);
+    }
 
     for (let b = 0; b < model.nbody; b++) {
       //let parent_body = model.body_parentid()[b];
@@ -497,10 +517,32 @@ export async function loadSceneFromURL(mujoco, filename, parent) {
       }
     }
 
+    parent.mujocoRoot = mujocoRoot;
+
     return [model, state, simulation, bodies, lights]
 }
 
-// import fs from "./fs";
+
+
+// // import fs from "./fs";
+// async function* getFilesRecursively(entry) {
+//   console.log(entry.kind)
+//   if (entry.kind === "file") {
+//     const file = await entry.getFile();
+//     if (file !== null) {
+//       file.relativePath = getRelativePath(entry);
+//       yield file;
+//     }
+//   } else if (entry.kind === "directory") {
+//     for await (const handle of entry.values()) {
+//       yield* getFilesRecursively(handle);
+//     }
+//   }
+// }
+// for await (const fileHandle of getFilesRecursively('./examples/scenes/')) {
+//   console.log(fileHandle);
+// }
+
 
 
 // console.log(walk("myosuite/"));

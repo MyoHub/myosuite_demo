@@ -16,13 +16,13 @@
     </default>
   </default>
   <option timestep="0.002">
-    <flag energy="enable"></flag>
+    <!-- <flag energy="enable"></flag> -->
   </option>
-  <size njmax="1000" nconmax="400" nuser_jnt="1"></size>
+  <!-- <size njmax="1000" nconmax="400" nuser_jnt="1"></size>
   <visual>
     <map fogstart="3" fogend="5" force="0.1"></map>
     <quality shadowsize="1024"></quality>
-  </visual>
+  </visual> -->
   <worldbody>
     <geom name="floor" pos="0 0 0" size="10 10 0.125" type="plane" material="MatPlane" condim="3"></geom>
     <body name="base" pos="0 4.89859e-17 0.8" quat="0.7071067811865475 0.7071067811865475 0.0 0.0">
