@@ -10,12 +10,12 @@ import   load_mujoco        from '../dist/mujoco_wasm.js';
 const mujoco = await load_mujoco();
 
 // Set up Emscripten's Virtual File System
-var initialScene = "humanoid.xml";
-// var initialScene = "myosuite/myo_test.xml";
+var initialScene = "myo_sim/hand/myo_hand.xml";
 mujoco.FS.mkdir('/working');
 mujoco.FS.mount(mujoco.MEMFS, { root: '.' }, '/working');
-mujoco.FS.writeFile("/working/" + initialScene, await(await fetch("./examples/scenes/" + initialScene)).text());
-// mujoco.FS.writeFile("/working/" + initialScene, await(await fetch("./examples/myosuite/" + initialScene)).text());
+// Download the the examples to MuJoCo's virtual file system
+await downloadExampleScenesFolder(mujoco);
+
 export class MuJoCoDemo {
   constructor() {
     this.mujoco = mujoco;
@@ -76,11 +76,8 @@ export class MuJoCoDemo {
   }
 
   async init() {
-    // Download the the examples to MuJoCo's virtual file system
-    await downloadExampleScenesFolder(mujoco);
-
     // Initialize the three.js Scene using the .xml Model in initialScene
-    [this.model, this.state, this.simulation, this.bodies, this.lights] =
+    [this.model, this.state, this.simulation, this.bodies, this.lights] =  
       await loadSceneFromURL(mujoco, initialScene, this);
 
     this.gui = new GUI();
@@ -246,7 +243,7 @@ export class MuJoCoDemo {
         }
       }
       this.mujocoRoot.cylinders.count = numWraps;
-      this.mujocoRoot.spheres  .count = numWraps+1;
+      this.mujocoRoot.spheres  .count = numWraps > 0 ? numWraps + 1: 0;
       this.mujocoRoot.cylinders.instanceMatrix.needsUpdate = true;
       this.mujocoRoot.spheres  .instanceMatrix.needsUpdate = true;
     }
