@@ -41,7 +41,7 @@ export class MuJoCoDemo {
 
     this.camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.001, 100 );
     this.camera.name = 'PerspectiveCamera';
-    this.camera.position.set(2.0, 1.7, 1.7);
+    this.camera.position.set(0.3, 1.5, 1.2);
     this.scene.add(this.camera);
 
     this.scene.background = new THREE.Color(0.15, 0.25, 0.35);
@@ -61,7 +61,7 @@ export class MuJoCoDemo {
     this.container.appendChild( this.renderer.domElement );
 
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-    this.controls.target.set(0, 0.7, 0);
+    this.controls.target.set(-0.2, 1.4, 0.4);
     this.controls.panSpeed = 2;
     this.controls.zoomSpeed = 1;
     this.controls.enableDamping = true;
@@ -122,7 +122,7 @@ export class MuJoCoDemo {
           }
           let bodyID = dragged.bodyID;
           this.dragStateManager.update(); // Update the world-space force origin
-          let force = toMujocoPos(this.dragStateManager.currentWorld.clone().sub(this.dragStateManager.worldHit).multiplyScalar(this.model.body_mass[bodyID] * 250));
+          let force = toMujocoPos(this.dragStateManager.currentWorld.clone().sub(this.dragStateManager.worldHit).multiplyScalar(250));
           let point = toMujocoPos(this.dragStateManager.worldHit.clone());
           this.simulation.applyForce(force.x, force.y, force.z, 0, 0, 0, point.x, point.y, point.z, bodyID);
 

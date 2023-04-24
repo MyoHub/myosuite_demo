@@ -488,6 +488,7 @@ export async function loadSceneFromURL(mujoco, filename, parent) {
       light.shadow.mapSize.height = 1024; // default
       light.shadow.camera.near = 1; // default
       light.shadow.camera.far = 10; // default
+      light.shadow.bias = -0.005;
       //bodies[model.light_bodyid()].add(light);
       if (bodies[0]) {
         bodies[0].add(light);
@@ -548,33 +549,8 @@ export async function loadSceneFromURL(mujoco, filename, parent) {
  * @param {mujoco} mujoco */
 export async function downloadExampleScenesFolder(mujoco) {
   let allFiles = [
-    "22_humanoids.xml",
-    "adhesion.xml",
-    "agility_cassie/assets/achilles-rod.obj",
-    "agility_cassie/assets/cassie-texture.png",
-    "agility_cassie/assets/foot-crank.obj",
-    "agility_cassie/assets/foot.obj",
-    "agility_cassie/assets/heel-spring.obj",
-    "agility_cassie/assets/hip-pitch.obj",
-    "agility_cassie/assets/hip-roll.obj",
-    "agility_cassie/assets/hip-yaw.obj",
-    "agility_cassie/assets/knee-spring.obj",
-    "agility_cassie/assets/knee.obj",
-    "agility_cassie/assets/pelvis.obj",
-    "agility_cassie/assets/plantar-rod.obj",
-    "agility_cassie/assets/shin.obj",
-    "agility_cassie/assets/tarsus.obj",
-    "agility_cassie/cassie.xml",
-    "agility_cassie/scene.xml",
     "arm26.xml",
-    "balloons.xml",
-    "flag.xml",
-    "hammock.xml",
     "humanoid.xml",
-    "humanoid_body.xml",
-    "mug.obj",
-    "mug.png",
-    "mug.xml",
     "myo_sim/basic/muscle_load.xml",
     "myo_sim/elbow/assets/myo_elbow_1dof6muscles_1dofexo_body.xml",
     "myo_sim/elbow/assets/myo_elbow_1dof6muscles_body.xml",
@@ -803,28 +779,7 @@ export async function downloadExampleScenesFolder(mujoco) {
     "robohive/resources/meshes/knuckle.stl",
     "robohive/resources/meshes/lfmetacarpal.stl",
     "robohive/resources/meshes/palm.stl",
-    "robohive/resources/meshes/wrist.stl",
-    "scene.xml",
-    "shadow_hand/assets/f_distal_pst.obj",
-    "shadow_hand/assets/f_knuckle.obj",
-    "shadow_hand/assets/f_middle.obj",
-    "shadow_hand/assets/f_proximal.obj",
-    "shadow_hand/assets/forearm_0.obj",
-    "shadow_hand/assets/forearm_1.obj",
-    "shadow_hand/assets/forearm_collision.obj",
-    "shadow_hand/assets/lf_metacarpal.obj",
-    "shadow_hand/assets/mounting_plate.obj",
-    "shadow_hand/assets/palm.obj",
-    "shadow_hand/assets/th_distal_pst.obj",
-    "shadow_hand/assets/th_middle.obj",
-    "shadow_hand/assets/th_proximal.obj",
-    "shadow_hand/assets/wrist.obj",
-    "shadow_hand/left_hand.xml",
-    "shadow_hand/right_hand.xml",
-    "shadow_hand/scene_left.xml",
-    "shadow_hand/scene_right.xml",
-    "simple.xml",
-    "slider_crank.xml"
+    "robohive/resources/meshes/wrist.stl"
   ];
 
   let requests = allFiles.map((url) => fetch("./examples/scenes/" + url));
