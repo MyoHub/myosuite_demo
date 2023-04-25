@@ -29,15 +29,9 @@ export function setupGUI(parentContext) {
   parentContext.gui.add(parentContext.params, 'scene', {
     "Hand": "myo_sim/hand/myo_hand.xml",
     "Elbow": "myo_sim/elbow/myo_elbow_1dof6muscles.xml",
-    //"Humanoid": "humanoid.xml",
-    // "Cassie": "agility_cassie/scene.xml",
-    //"MyoTest": "myo_sim/myo_test.xml",
-    "Adroit": "robohive/Adroit_hand.xml",
+    "Elbow Exo": "myo_sim/elbow/myo_elbow_1dof6muscles_1dofexo.xml",
     "motor_finger_v0": "myo_sim/finger/motor_finger_v0.xml",
     "myo_finger_v0": "myo_sim/finger/myo_finger_v0.xml",
-    "finger_v0": "myo_sim/finger/finger_v0.xml",
-    // "Hammock": "hammock.xml", "Balloons": "balloons.xml", "Hand": "shadow_hand/scene_right.xml",
-    // "Flag": "flag.xml", "Mug": "mug.xml"
   }).name('Example Scene').onChange(reload);
 
   // Add a help menu.
@@ -214,9 +208,12 @@ export function setupGUI(parentContext) {
     }
   });
 
+  let textDecoder = new TextDecoder("utf-8");
+  let nullChar    = textDecoder.decode(new ArrayBuffer(1));
+
   // Add sliders for ctrlnoiserate and ctrlnoisestd; min = 0, max = 2, step = 0.01.
-  simulationFolder.add(parentContext.params, 'ctrlnoiserate', 0.0, 2.0, 0.01).name('Noise rate' );
-  simulationFolder.add(parentContext.params, 'ctrlnoisestd' , 0.0, 2.0, 0.01).name('Noise scale');
+  // simulationFolder.add(parentContext.params, 'ctrlnoiserate', 0.0, 2.0, 0.01).name('Noise rate' );
+  // simulationFolder.add(parentContext.params, 'ctrlnoisestd' , 0.0, 2.0, 0.01).name('Noise scale');
 
   // Add actuator sliders.
   let actuatorFolder = simulationFolder.addFolder("Actuators");
@@ -225,7 +222,10 @@ export function setupGUI(parentContext) {
     let actuatorGUIs = [];
     for (let i = 0; i < model.nu; i++) {
       if (!model.actuator_ctrllimited[i]) { continue; }
-      let name = "Actuator " + i;
+      let name = textDecoder.decode(
+        parentContext.model.names.subarray(
+          parentContext.model.name_actuatoradr[i])).split(nullChar)[0];
+
       parentContext.params[name] = 0.0;
       let actuatorGUI = actuatorFolder.add(parentContext.params, name, act_range[2 * i], act_range[2 * i + 1], 0.01).name(name).listen();
       actuatorGUIs.push(actuatorGUI);
@@ -520,37 +520,10 @@ export async function loadSceneFromURL(mujoco, filename, parent) {
     return [model, state, simulation, bodies, lights]
 }
 
-
-
-// // import fs from "./fs";
-// async function* getFilesRecursively(entry) {
-//   console.log(entry.kind)
-//   if (entry.kind === "file") {
-//     const file = await entry.getFile();
-//     if (file !== null) {
-//       file.relativePath = getRelativePath(entry);
-//       yield file;
-//     }
-//   } else if (entry.kind === "directory") {
-//     for await (const handle of entry.values()) {
-//       yield* getFilesRecursively(handle);
-//     }
-//   }
-// }
-// for await (const fileHandle of getFilesRecursively('./examples/scenes/')) {
-//   console.log(fileHandle);
-// }
-
-
-
-// console.log(walk("myosuite/"));
-
 /** Downloads the scenes/examples folder to MuJoCo's virtual filesystem
  * @param {mujoco} mujoco */
 export async function downloadExampleScenesFolder(mujoco) {
   let allFiles = [
-    "arm26.xml",
-    "humanoid.xml",
     "myo_sim/basic/muscle_load.xml",
     "myo_sim/elbow/assets/myo_elbow_1dof6muscles_1dofexo_body.xml",
     "myo_sim/elbow/assets/myo_elbow_1dof6muscles_body.xml",
@@ -764,22 +737,6 @@ export async function downloadExampleScenesFolder(mujoco) {
     "myo_sim/scene/myosuite_scene_noFloor_noPedestal.obj",
     "myo_sim/scene/myosuite_scene_noPedestal.xml",
     "myo_sim/scene/myosuite_warning.png",
-    "robohive/Adroit_hand.xml",
-    "robohive/resources/assets.xml",
-    "robohive/resources/chain.xml",
-    "robohive/resources/joint_position_actuation.xml",
-    "robohive/resources/meshes/F1.stl",
-    "robohive/resources/meshes/F2.stl",
-    "robohive/resources/meshes/F3.stl",
-    "robohive/resources/meshes/TH1_z.stl",
-    "robohive/resources/meshes/TH2_z.stl",
-    "robohive/resources/meshes/TH3_z.stl",
-    "robohive/resources/meshes/forearm_simple.stl",
-    "robohive/resources/meshes/forearm_simple_cvx.stl",
-    "robohive/resources/meshes/knuckle.stl",
-    "robohive/resources/meshes/lfmetacarpal.stl",
-    "robohive/resources/meshes/palm.stl",
-    "robohive/resources/meshes/wrist.stl"
   ];
 
   let requests = allFiles.map((url) => fetch("./examples/scenes/" + url));
