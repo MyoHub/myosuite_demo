@@ -482,6 +482,7 @@ export async function loadSceneFromURL(mujoco, filename, parent) {
       light.shadow.mapSize.height = 1024; // default
       light.shadow.camera.near = 1; // default
       light.shadow.camera.far = 10; // default
+      light.shadow.bias = -0.005;
       //bodies[model.light_bodyid()].add(light);
       if (bodies[0]) {
         bodies[0].add(light);
@@ -517,6 +518,7 @@ export async function loadSceneFromURL(mujoco, filename, parent) {
  * @param {mujoco} mujoco */
 export async function downloadExampleScenesFolder(mujoco) {
   let allFiles = [
+
     "myo_sim/basic/muscle_load.xml",
     "myo_sim/elbow/assets/myo_elbow_1dof6muscles_1dofexo_body.xml",
     "myo_sim/elbow/assets/myo_elbow_1dof6muscles_body.xml",
