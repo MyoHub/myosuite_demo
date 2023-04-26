@@ -77,7 +77,7 @@ export class MuJoCoDemo {
 
   async init() {
     // Initialize the three.js Scene using the .xml Model in initialScene
-    [this.model, this.state, this.simulation, this.bodies, this.lights] =  
+    [this.model, this.state, this.simulation, this.bodies, this.lights] =
       await loadSceneFromURL(mujoco, initialScene, this);
 
     this.gui = new GUI();
