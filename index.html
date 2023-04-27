@@ -6,10 +6,11 @@
         <meta name="application-name"   content="mujoco_wasm">
         <meta name="description"        content="MyoSuite Demo">
         <meta name="keywords"           content="MyoSuite, Demo, MuJoCo">
-        <meta name="author"             content="Vittorio Caggiano">
+        <meta name="author"             content="Vittorio Caggiano, Vikash Kumar">
         <meta name="viewport"           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover, user-scalable=no, shrink-to-fit=0">
         <meta name="theme-color"        content="#ffffff">
         <link rel ="icon" type="image/x-icon" href="./examples/Favicon 32.png">
+        <link type="text/css" rel="stylesheet" href="style.css">
     </head>
 
     <body style="margin:0px; background-color:rgb(255, 255, 255); overflow:hidden; position:fixed; min-height: 100%;
@@ -21,12 +22,19 @@
                  -ms-user-select: none; /* Internet Explorer/Edge */
                  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */">
         <h1 hidden></h1> <!-- Puts the Lighthouse Score over 90 heheh-->
-        
-	  <div id="info" style="bottom: 0px;">
-	    Models Available on MyoSuite with <a href="https://github.com/facebookresearch/MyoSuite" target="_blank" rel="noopener"></a> <img src="https://user-images.githubusercontent.com/23240128/233209820-821715e0-07e6-4dbc-8133-d915a7ea06b7.png" width=40>
-	  </div>
-		<!-- Import maps polyfill -->
-		<script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+
+        <div id="info" style="top: 0px;">
+            <a href="https://sites.google.com/view/myosuite/" target="_blank" rel="noopener">MyoSuite</a> Demo
+
+          </div>
+
+        <div id="info" style="bottom: 0px;">
+            Built with <a href="https://github.com/zalo/mujoco_wasm/" target="_blank" rel="noopener">mujoco_wasm</a> and <a href="https://threejs.org/" target="_blank" rel="noopener">three.js</a> ❤️
+            <br>(with support form <a href="https://twitter.com/makeshifted" target="_blank" rel="noopener">Johnathon Selstad)</a>
+        </div>
+
+        <!-- Import maps polyfill -->
+        <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
 
         <!-- Allows three.js Examples to work without building -->
         <script type="importmap">
