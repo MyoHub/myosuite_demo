@@ -28,6 +28,7 @@ export function setupGUI(parentContext) {
   let reload = reloadFunc.bind(parentContext);
   parentContext.gui.add(parentContext.params, 'scene', {
     "Hand": "myo_sim/hand/myo_hand.xml",
+    "Hand2": "myo_sim/hand/myo_hand_combined.xml",
     "TEST": "myo_sim/elbow/myo_test.xml",
     "Elbow": "myo_sim/elbow/myo_elbow_1dof6muscles.xml",
     "Elbow Exo": "myo_sim/elbow/myo_elbow_1dof6muscles_1dofexo.xml",
@@ -544,6 +545,7 @@ export async function downloadExampleScenesFolder(mujoco) {
     "myo_sim/hand/assets/myo_hand_body.xml",
     "myo_sim/hand/assets/myo_hand_body_TTrans.xml",
     "myo_sim/hand/myo_hand.xml",
+    "myo_sim/hand/myo_hand_combined.xml",
     "myo_sim/meshes/1mc.stl",
     "myo_sim/meshes/2distph.stl",
     "myo_sim/meshes/2mc.stl",
