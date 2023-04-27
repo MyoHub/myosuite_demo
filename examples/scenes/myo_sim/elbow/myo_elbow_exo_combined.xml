@@ -257,7 +257,7 @@
 
 
   <actuator>
-    <motor name="Exo" joint="r_elbow_flex" gear="8.5"/>
+    <motor name="Exo" joint="r_elbow_flex" gear="8.5" ctrllimited="false" ctrlrange="-1 1"/>
     <muscle name="TRIlong" force = "769.595" range="0.828323 1.58818" lmin="0.420881" lmax="1.90307" fpmax="1.37875" tendon="TRIlong_tendon" lengthrange="0.253995 0.355816"  class="muscle"></muscle>
     <muscle name="TRIlat" force = "604.403" range="0.602904 1.02895" lmin="0.335897" lmax="2.90142" fpmax="1.79842" tendon="TRIlat_tendon" lengthrange="0.16661 0.215095"  class="muscle"></muscle>
     <muscle name="TRImed" force = "604.231" range="0.557454 0.983503" lmin="0.337519" lmax="2.16009" fpmax="1.31972" tendon="TRImed_tendon" lengthrange="0.154238 0.202723"  class="muscle"></muscle>
