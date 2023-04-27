@@ -10,7 +10,7 @@ import   load_mujoco        from '../dist/mujoco_wasm.js';
 const mujoco = await load_mujoco();
 
 // Set up Emscripten's Virtual File System
-var initialScene = "myo_sim/hand/myo_hand.xml";
+var initialScene = "myo_sim/hand/myo_hand_combined.xml";
 mujoco.FS.mkdir('/working');
 mujoco.FS.mount(mujoco.MEMFS, { root: '.' }, '/working');
 // Download the the examples to MuJoCo's virtual file system

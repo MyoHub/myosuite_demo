@@ -12,22 +12,14 @@
   <size njmax="1000" nconmax="400" nuser_jnt="1"/>
   <option timestep="0.002"/>
 
-  <visual>
-    <headlight diffuse="1 1 1"/>
-    <scale actuatorwidth=".075"/>
-
-        <!-- <scale light=".05" framewidth=".005"/> -->
-        <!-- <headlight ambient=".5 .5 .5" diffuse="0.50 0.50 0.50" specular="0.50 0.50 0.50"/> -->
-  </visual>
-
   <default>
-    <default class="myohand">
+    <!-- <default  > -->
       <joint limited="true" damping="0.05" armature="1e-4" stiffness="0"/>
-      <geom contype="0" conaffinity="0" condim="3" rgba="0.8 0.8 .8 1" margin="0.001" solref=".02 1" solimp=".8 .8 .01" material="geom"/>
+      <!-- <geom contype="0" conaffinity="0" condim="3" rgba="0.8 0.8 .8 1" margin="0.001" solref=".02 1" solimp=".8 .8 .01" material="geom"/> -->
       <site size="0.0012" rgba=".2 .6 .2 1" group="3"/>
       <tendon width="0.001" rgba=".95 .3 .3 1" limited="false" />
       <default class="skin">
-        <geom type="capsule" group="1" contype="1" conaffinity="1" condim="3" rgba="0.8 0.7 .5 1" margin="0.001" material="MatSkin"/>
+        <geom type="capsule" group="1" contype="1" conaffinity="1" condim="3" rgba="0.8 0.7 .5 1" margin="0.001" material="MatSkin" />
       </default>
       <default class="wrap">
         <geom rgba=".5 .5 .9 1" group="3" contype="0" conaffinity="0"/>
@@ -35,69 +27,8 @@
       <default class="muscle">
         <muscle ctrllimited="true" ctrlrange="0 1" />
       </default>
-    </default>
+    <!-- </default> -->
   </default>
-
-  <asset>
-    <mesh name="body_norighthand" file="../meshes/human_lowpoly_norighthand.stl" scale="1 1 1"/>
-    <mesh name="thorax" file="../meshes/thorax.stl" scale="1 1 1"/>
-    <mesh name="clavicle" file="../meshes/clavicle.stl" scale="1 1 1"/>
-    <mesh name="scapula" file="../meshes/scapula.stl" scale="1 1 1"/>
-    <mesh name="humerus" file="../meshes/humerus.stl" scale="1 1 1"/>
-    <mesh name="ulna" file="../meshes/ulna.stl" scale="1 1 1"/>
-    <mesh name="radius" file="../meshes/radius.stl" scale="1 1 1"/>
-    <mesh name="lunate" file="../meshes/lunate.stl" scale="1 1 1"/>
-    <mesh name="scaphoid" file="../meshes/scaphoid.stl" scale="1 1 1"/>
-    <mesh name="pisiform" file="../meshes/pisiform.stl" scale="1 1 1"/>
-    <mesh name="triquetrum" file="../meshes/triquetrum.stl" scale="1 1 1"/>
-    <mesh name="capitate" file="../meshes/capitate.stl" scale="1 1 1"/>
-    <mesh name="trapezium" file="../meshes/trapezium.stl" scale="1 1 1"/>
-    <mesh name="1mc" file="../meshes/1mc.stl" scale="1 1 1"/>
-    <mesh name="thumbprox" file="../meshes/thumbprox.stl" scale="1 1 1"/>
-    <mesh name="thumbdist" file="../meshes/thumbdist.stl" scale="1 1 1"/>
-    <mesh name="trapezoid" file="../meshes/trapezoid.stl" scale="1 1 1"/>
-    <mesh name="hamate" file="../meshes/hamate.stl" scale="1 1 1"/>
-    <mesh name="2mc" file="../meshes/2mc.stl" scale="1 1 1"/>
-    <mesh name="2proxph" file="../meshes/2proxph.stl" scale="1 1 1"/>
-    <mesh name="2midph" file="../meshes/2midph.stl" scale="1 1 1"/>
-    <mesh name="2distph" file="../meshes/2distph.stl" scale="1 1 1"/>
-    <mesh name="3mc" file="../meshes/3mc.stl" scale="1 1 1"/>
-    <mesh name="3proxph" file="../meshes/3proxph.stl" scale="1 1 1"/>
-    <mesh name="3midph" file="../meshes/3midph.stl" scale="1 1 1"/>
-    <mesh name="3distph" file="../meshes/3distph.stl" scale="1 1 1"/>
-    <mesh name="4mc" file="../meshes/4mc.stl" scale="1 1 1"/>
-    <mesh name="4proxph" file="../meshes/4proxph.stl" scale="1 1 1"/>
-    <mesh name="4midph" file="../meshes/4midph.stl" scale="1 1 1"/>
-    <mesh name="4distph" file="../meshes/4distph.stl" scale="1 1 1"/>
-    <mesh name="5mc" file="../meshes/5mc.stl" scale="1 1 1"/>
-    <mesh name="5proxph" file="../meshes/5proxph.stl" scale="1 1 1"/>
-    <mesh name="5midph" file="../meshes/5midph.stl" scale="1 1 1"/>
-    <mesh name="5distph" file="../meshes/5distph.stl" scale="1 1 1"/>
-
-    <texture name="texplane" type="2d" builtin="checker" rgb1=".2 .19 .2" rgb2=".1 0.11 0.11" width="50" height="50"/>
-    <texture name="texgeom" type="cube" builtin="flat" mark="cross" width="127" height="1278" rgb1="0.7 0.7 0.7" rgb2="0.9 0.9 0.9" markrgb="1 1 1" random="0.01"/>
-    <material name="MatPlane" reflectance="0.5" texture="texplane" texrepeat="4 4" texuniform="true"/>
-    <material name="geom" texture="texgeom" texuniform="true"/>
-    <material name="MatSkin" specular="0.2" shininess=".1" reflectance="0.5" rgba="0.9 .7 .5 1"/>
-
-
-
-    <!-- Scene -©vk©-->
-    <texture name="textscene" type="2d" file="../scene/myosuite_scene.png"/>
-    <material name="matscene" texture="textscene"/>
-    <mesh name="meshscene" file="../scene/myosuite_scene_noFloor.obj" scale=".01 .01 .01"/>
-
-    <!-- Floor -©vk©-->
-    <texture name="texfloor" type="2d" height="1" width="1" file="../scene/floor0.png"/>
-    <material name="matfloor" reflectance="0.01" texture="texfloor" texrepeat="1 1" texuniform="true"/>
-
-    <!-- Logo -©vk©-->
-    <texture name="textlogo" type="2d" file="../scene/myosuite_logo.png"/>
-    <mesh name="logo" file="../scene/myosuite_logo.obj" scale="1 1 1"/>
-    <material name="matlogo" texture="textlogo"/>
-
-  </asset>
-
 
   <contact>
     <exclude body1="ulna" body2="radius"/>
@@ -107,8 +38,8 @@
     <exclude body1="proxph4" body2="proxph5"/>
   </contact>
 
- <!-- Add files to the world -©vk©-->
-  <worldbody>
+    <!-- Add files to the world -©vk©-->
+<worldbody>
     <!-- indoor lights -©vk©-->
     <light directional="false" diffuse=".5 .5 .5" specular="0.25 0.25 0.25" pos="0 -3 3" dir="0 1 -1" mode="trackcom"/>
     <camera name="side_view" pos="-3 0 2.25" xyaxes="0 -1 0 1 0 2" mode="trackcom"/>
@@ -120,7 +51,10 @@
     <geom type="cylinder" pos="0 0 -.190" size="1.05 .205" contype="1" conaffinity="1" group="4"/>
     <geom type="mesh" mesh="logo" material="matlogo" group="1" conaffinity="0" contype="0" euler="1.57 0 0" pos="0 6.95 2.1"/>
 
-    <body childclass="myohand" name="full_body">
+    <!-- <geom type="box" size=".01 .01 0.85" pos="0 0 0.85"/> -->
+    <!-- <geom type="mesh" mesh="human" rgba=".8 .8 .8 1" euler="0 0 3.14" pos="0 0 0"/> -->
+
+    <body name="full_body">
       <geom name="body" type="mesh" mesh="body_norighthand" euler="0 0 3.14"/>
       <body name="thorax" pos="0 0.08 1.4" euler="1.57 -1.57 0">
         <!-- <geom name="thorax" type="mesh" mesh="thorax"/> -->
@@ -823,8 +757,71 @@
     </body>
   </worldbody>
 
+
+  <asset>
+    <mesh name="body_norighthand" file="../meshes/human_lowpoly_norighthand.stl" scale="1 1 1"/>
+    <mesh name="thorax" file="../meshes/thorax.stl" scale="1 1 1"/>
+    <mesh name="clavicle" file="../meshes/clavicle.stl" scale="1 1 1"/>
+    <mesh name="scapula" file="../meshes/scapula.stl" scale="1 1 1"/>
+    <mesh name="humerus" file="../meshes/humerus.stl" scale="1 1 1"/>
+    <mesh name="ulna" file="../meshes/ulna.stl" scale="1 1 1"/>
+    <mesh name="radius" file="../meshes/radius.stl" scale="1 1 1"/>
+    <mesh name="lunate" file="../meshes/lunate.stl" scale="1 1 1"/>
+    <mesh name="scaphoid" file="../meshes/scaphoid.stl" scale="1 1 1"/>
+    <mesh name="pisiform" file="../meshes/pisiform.stl" scale="1 1 1"/>
+    <mesh name="triquetrum" file="../meshes/triquetrum.stl" scale="1 1 1"/>
+    <mesh name="capitate" file="../meshes/capitate.stl" scale="1 1 1"/>
+    <mesh name="trapezium" file="../meshes/trapezium.stl" scale="1 1 1"/>
+    <mesh name="1mc" file="../meshes/1mc.stl" scale="1 1 1"/>
+    <mesh name="thumbprox" file="../meshes/thumbprox.stl" scale="1 1 1"/>
+    <mesh name="thumbdist" file="../meshes/thumbdist.stl" scale="1 1 1"/>
+    <mesh name="trapezoid" file="../meshes/trapezoid.stl" scale="1 1 1"/>
+    <mesh name="hamate" file="../meshes/hamate.stl" scale="1 1 1"/>
+    <mesh name="2mc" file="../meshes/2mc.stl" scale="1 1 1"/>
+    <mesh name="2proxph" file="../meshes/2proxph.stl" scale="1 1 1"/>
+    <mesh name="2midph" file="../meshes/2midph.stl" scale="1 1 1"/>
+    <mesh name="2distph" file="../meshes/2distph.stl" scale="1 1 1"/>
+    <mesh name="3mc" file="../meshes/3mc.stl" scale="1 1 1"/>
+    <mesh name="3proxph" file="../meshes/3proxph.stl" scale="1 1 1"/>
+    <mesh name="3midph" file="../meshes/3midph.stl" scale="1 1 1"/>
+    <mesh name="3distph" file="../meshes/3distph.stl" scale="1 1 1"/>
+    <mesh name="4mc" file="../meshes/4mc.stl" scale="1 1 1"/>
+    <mesh name="4proxph" file="../meshes/4proxph.stl" scale="1 1 1"/>
+    <mesh name="4midph" file="../meshes/4midph.stl" scale="1 1 1"/>
+    <mesh name="4distph" file="../meshes/4distph.stl" scale="1 1 1"/>
+    <mesh name="5mc" file="../meshes/5mc.stl" scale="1 1 1"/>
+    <mesh name="5proxph" file="../meshes/5proxph.stl" scale="1 1 1"/>
+    <mesh name="5midph" file="../meshes/5midph.stl" scale="1 1 1"/>
+    <mesh name="5distph" file="../meshes/5distph.stl" scale="1 1 1"/>
+
+    <texture name="texplane" type="2d" builtin="checker" rgb1=".2 .19 .2" rgb2=".1 0.11 0.11" width="50" height="50"/>
+    <texture name="texgeom" type="cube" builtin="flat" mark="cross" width="127" height="1278" rgb1="0.7 0.7 0.7" rgb2="0.9 0.9 0.9" markrgb="1 1 1" random="0.01"/>
+    <material name="MatPlane" reflectance="0.5" texture="texplane" texrepeat="4 4" texuniform="true"/>
+    <material name="geom" texture="texgeom" texuniform="true"/>
+    <material name="MatSkin" specular="0.2" shininess=".1" reflectance="0.5" rgba="0.9 .7 .5 1"/>
+
+
+
+    <!-- Scene -©vk©-->
+    <texture name="textscene" type="2d" file="../scene/myosuite_scene.png"/>
+    <material name="matscene" texture="textscene"/>
+    <mesh name="meshscene" file="../scene/myosuite_scene_noFloor.obj" scale=".01 .01 .01"/>
+
+    <!-- Floor -©vk©-->
+    <texture name="texfloor" type="2d" height="1" width="1" file="../scene/floor0.png"/>
+    <material name="matfloor" reflectance="0.01" texture="texfloor" texrepeat="1 1" texuniform="true"/>
+
+    <!-- Logo -©vk©-->
+    <texture name="textlogo" type="2d" file="../scene/myosuite_logo.png"/>
+    <mesh name="logo" file="../scene/myosuite_logo.obj" scale="1 1 1"/>
+    <material name="matlogo" texture="textlogo"/>
+
+    <!-- <mesh name="human" file="../myo_sim/body/Geometry/human_lowpoly.stl" scale="1 1 1"/> -->
+
+  </asset>
+
   <tendon>
-    <spatial class="myohand" name="ECRL_tendon" >
+    <spatial   name="ECRL_tendon" >
       <site site="ECRL-P1"/>
       <geom geom="Elbow_PT_ECRL_wrap" sidesite="Elbow_PT_ECRL_site_ECRL_side"></geom>
       <site site="ECRL-P2"/>
@@ -832,14 +829,14 @@
       <geom geom="ECRL_torus_wrap" sidesite="ECRL_torus_site_ECRL_side"/>
       <site site="ECRL-P4"/>
     </spatial>
-    <spatial class="myohand" name="ECRB_tendon" >
+    <spatial   name="ECRB_tendon" >
       <site site="ECRB-P1"/>
       <site site="ECRB-P2"/>
       <site site="ECRB-P3"/>
       <geom geom="ECRB_torus_wrap" sidesite="ECRB_torus_site_ECRB_side"/>
       <site site="ECRB-P4"/>
     </spatial>
-    <spatial class="myohand" name="ECU_tendon" >
+    <spatial   name="ECU_tendon" >
       <site site="ECU-P1"/>
       <site site="ECU-P2"/>
       <site site="ECU-P3"/>
@@ -848,14 +845,14 @@
       <geom geom="ECU_torus_wrap" sidesite="ECU_torus_site_ECU_side"/>
       <site site="ECU-P6"/>
     </spatial>
-    <spatial class="myohand" name="FCR_tendon" >
+    <spatial   name="FCR_tendon" >
       <site site="FCR-P1"/>
       <geom geom="Elbow_PT_FCU_wrap" sidesite="Elbow_PT_FCU_site_FCU_side"></geom>
       <site site="FCR-P2"/>
       <geom geom="FCR_torus_wrap" sidesite="FCR_torus_site_FCR_side"/>
       <site site="FCR-P3"/>
     </spatial>
-    <spatial class="myohand" name="FCU_tendon" >
+    <spatial   name="FCU_tendon" >
       <site site="FCU-P1"/>
       <geom geom="Elbow_PT_FCU_wrap" sidesite="Elbow_PT_FCU_site_FCU_side"></geom>
       <site site="FCU-P2"/>
@@ -864,7 +861,7 @@
       <site site="FCU-P4"/>
       <site site="FCU-P5"/>
     </spatial>
-    <spatial class="myohand" name="PL_tendon" >
+    <spatial   name="PL_tendon" >
       <site site="PL-P1"/>
       <geom geom="Elbow_PT_FCU_wrap" sidesite="Elbow_PT_FCU_site_FCU_side"></geom>
       <site site="PL-P2"/>
@@ -872,7 +869,7 @@
       <site site="PL-P3"/>
       <site site="PL-P4"/>
     </spatial>
-    <spatial class="myohand" name="PT_tendon">
+    <spatial   name="PT_tendon">
       <site site="PT-P1"/>
       <geom geom="Elbow_PT_FCU_wrap" sidesite="Elbow_PT_FCU_site_FCU_side"></geom>
       <site site="PT-P2"/>
@@ -880,12 +877,12 @@
       <site site="PT-P4"/>
       <site site="PT-P5"/>
     </spatial>
-    <spatial class="myohand" name="PQ_tendon" >
+    <spatial   name="PQ_tendon" >
       <site site="PQ-P1"/>
       <geom geom="PQ2_wrap" sidesite="PQ2_site_PQ_side"/>
       <site site="PQ-P2"/>
     </spatial>
-    <spatial class="myohand" name="FDS5_tendon" >
+    <spatial   name="FDS5_tendon" >
       <site site="FDS5-P1"/>
       <geom geom="Elbow_PT_FCU_wrap" sidesite="Elbow_PT_FCU_site_FCU_side"></geom>
       <site site="FDS5-P2"/>
@@ -898,7 +895,7 @@
       <site site="FDS5-P7"/>
       <site site="FDS5-P8"/>
     </spatial>
-    <spatial class="myohand" name="FDS4_tendon" >
+    <spatial   name="FDS4_tendon" >
       <site site="FDS4-P1"/>
       <geom geom="Elbow_PT_FCU_wrap" sidesite="Elbow_PT_FCU_site_FCU_side"></geom>
       <site site="FDS4-P2"/>
@@ -912,7 +909,7 @@
       <site site="FDS4-P7"/>
       <site site="FDS4-P8"/>
     </spatial>
-    <spatial class="myohand" name="FDS3_tendon" >
+    <spatial   name="FDS3_tendon" >
       <site site="FDS3-P1"/>
       <site site="FDS3-P2"/>
       <geom geom="FDS_ellipsoid_wrap" sidesite="FDS_ellipsoid_site_FDS3_side"/>
@@ -923,7 +920,7 @@
       <site site="FDS3-P7"/>
       <site site="FDS3-P8"/>
     </spatial>
-    <spatial class="myohand" name="FDS2_tendon" >
+    <spatial   name="FDS2_tendon" >
       <site site="FDS2-P1"/>
       <site site="FDS2-P2"/>
       <geom geom="FDS_ellipsoid_wrap" sidesite="FDS_ellipsoid_site_FDS2_side"/>
@@ -934,7 +931,7 @@
       <site site="FDS2-P7"/>
       <site site="FDS2-P8"/>
     </spatial>
-    <spatial class="myohand" name="FDP5_tendon" >
+    <spatial   name="FDP5_tendon" >
       <site site="FDP5-P1"/>
       <site site="FDP5-P2"/>
       <geom geom="FDP_ellipsoid_wrap" sidesite="FDP_ellipsoid_site_FDP5_side"/>
@@ -948,7 +945,7 @@
       <site site="FDP5-P9"/>
       <site site="FDP5-P10"/>
     </spatial>
-    <spatial class="myohand" name="FDP4_tendon" >
+    <spatial   name="FDP4_tendon" >
       <site site="FDP4-P1"/>
       <site site="FDP4-P2"/>
       <geom geom="FDP_ellipsoid_wrap" sidesite="FDP_ellipsoid_site_FDP4_side"/>
@@ -962,7 +959,7 @@
       <site site="FDP4-P9"/>
       <site site="FDP4-P10"/>
     </spatial>
-    <spatial class="myohand" name="FDP3_tendon" >
+    <spatial   name="FDP3_tendon" >
       <site site="FDP3-P1"/>
       <site site="FDP3-P2"/>
       <geom geom="FDP_ellipsoid_wrap" sidesite="FDP_ellipsoid_site_FDP3_side"/>
@@ -976,7 +973,7 @@
       <site site="FDP3-P9"/>
       <site site="FDP3-P10"/>
     </spatial>
-    <spatial class="myohand" name="FDP2_tendon" >
+    <spatial   name="FDP2_tendon" >
       <site site="FDP2-P1"/>
       <site site="FDP2-P2"/>
       <geom geom="FDP_ellipsoid_wrap" sidesite="FDP_ellipsoid_site_FDP2_side"/>
@@ -990,7 +987,7 @@
       <site site="FDP2-P9"/>
       <site site="FDP2-P10"/>
     </spatial>
-    <spatial class="myohand" name="EDC5_tendon" >
+    <spatial   name="EDC5_tendon" >
       <site site="EDC5-P1"/>
       <site site="EDC5-P2"/>
       <site site="EDC5-P3"/>
@@ -1005,7 +1002,7 @@
       <geom geom="Fifthmd_wrap" sidesite="Fifthmd_site_EDC5_side"/>
       <site site="EDC5-P9"/>
     </spatial>
-    <spatial class="myohand" name="EDC4_tendon" >
+    <spatial   name="EDC4_tendon" >
       <site site="EDC4-P1"/>
       <site site="EDC4-P2"/>
       <site site="EDC4-P3"/>
@@ -1020,7 +1017,7 @@
       <geom geom="Fourthmd_wrap" sidesite="Fourthmd_site_EDC4_side"/>
       <site site="EDC4-P9"/>
     </spatial>
-    <spatial class="myohand" name="EDC3_tendon" >
+    <spatial   name="EDC3_tendon" >
       <site site="EDC3-P1"/>
       <site site="EDC3-P2"/>
       <site site="EDC3-P3"/>
@@ -1035,7 +1032,7 @@
       <geom geom="Thirdmd_wrap" sidesite="Thirdmd_site_EDC3_side"/>
       <site site="EDC3-P9"/>
     </spatial>
-    <spatial class="myohand" name="EDC2_tendon" >
+    <spatial   name="EDC2_tendon" >
       <site site="EDC2-P1"/>
       <site site="EDC2-P2"/>
       <site site="EDC2-P3"/>
@@ -1050,7 +1047,7 @@
       <geom geom="Secondmd_wrap" sidesite="Secondmd_site_EDC2_side"/>
       <site site="EDC2-P9"/>
     </spatial>
-    <spatial class="myohand" name="EDM_tendon" >
+    <spatial   name="EDM_tendon" >
       <site site="EDM-P1"/>
       <site site="EDM-P2"/>
       <site site="EDM-P3"/>
@@ -1065,7 +1062,7 @@
       <geom geom="Fifthmd_wrap" sidesite="Fifthmd_site_EDC5_side"/>
       <site site="EDM-P9"/>
     </spatial>
-    <spatial class="myohand" name="EIP_tendon" >
+    <spatial   name="EIP_tendon" >
       <site site="EIP-P1"/>
       <site site="EIP-P2"/>
       <site site="EIP-P3"/>
@@ -1082,7 +1079,7 @@
       <site site="EIP-P10"/>
       <site site="EIP-P11"/>
     </spatial>
-    <spatial class="myohand" name="EPL_tendon" springlength="0.2305">
+    <spatial   name="EPL_tendon" springlength="0.2305">
       <site site="EPL-P1"/>
       <site site="EPL-P2"/>
       <site site="EPL-P3"/>
@@ -1098,7 +1095,7 @@
       <geom geom="IPthumb_wrap" sidesite="IPthumb_site_EPL_side"/>
       <site site="EPL-P12"/>
     </spatial>
-    <spatial class="myohand" name="EPB_tendon" >
+    <spatial   name="EPB_tendon" >
       <site site="EPB-P1"/>
       <site site="EPB-P2"/>
       <site site="EPB-P3"/>
@@ -1109,7 +1106,7 @@
       <geom geom="MPthumb_wrap" sidesite="MPthumb_site_EPB_side"/>
       <site site="EPB-P8"/>
     </spatial>
-    <spatial class="myohand" name="FPL_tendon" >
+    <spatial   name="FPL_tendon" >
       <site site="FPL-P1"/>
       <site site="FPL-P2"/>
       <site site="FPL-P3"/>
@@ -1124,7 +1121,7 @@
       <geom geom="IPthumb_wrap" sidesite="IPthumb_site_FPL_side"/>
       <site site="FPL-P11"/>
     </spatial>
-    <spatial class="myohand" name="APL_tendon" >
+    <spatial   name="APL_tendon" >
       <site site="APL-P1"/>
       <site site="APL-P2"/>
       <site site="APL-P3"/>
@@ -1135,17 +1132,17 @@
       <site site="APL-P7"/>
       <site site="APL-P8"/>
     </spatial>
-    <spatial class="myohand" name="OP_tendon" >
+    <spatial   name="OP_tendon" >
       <site site="OP-P1"/>
       <site site="OP-P2"/>
     </spatial>
-    <spatial class="myohand" name="RI2_tendon" >
+    <spatial   name="RI2_tendon" >
       <site site="RI2-P1"/>
       <site site="RI2-P2"/>
       <geom geom="2ndmcp_ellipsoid_wrap" sidesite="2ndmcp_ellipsoid_site_RI2_side"/>
       <site site="RI2-P3"/>
     </spatial>
-    <spatial class="myohand" name="LU_RB2_tendon" >
+    <spatial   name="LU_RB2_tendon" >
       <site site="LU_RB2-P1"/>
       <site site="LU_RB2-P2"/>
       <site site="LU_RB2-P3"/>
@@ -1154,7 +1151,7 @@
       <site site="LU_RB2-P5"/>
       <site site="LU_RB2-P6"/>
     </spatial>
-    <spatial class="myohand" name="UI_UB2_tendon" >
+    <spatial   name="UI_UB2_tendon" >
       <site site="UI_UB2-P1"/>
       <site site="UI_UB2-P2"/>
       <site site="UI_UB2-P3"/>
@@ -1163,12 +1160,12 @@
       <site site="UI_UB2-P5"/>
       <site site="UI_UB2-P6"/>
     </spatial>
-    <spatial class="myohand" name="RI3_tendon" >
+    <spatial   name="RI3_tendon" >
       <site site="RI3-P1"/>
       <site site="RI3-P2"/>
       <site site="RI3-P3"/>
     </spatial>
-    <spatial class="myohand" name="LU_RB3_tendon" >
+    <spatial   name="LU_RB3_tendon" >
       <site site="LU_RB3-P1"/>
       <site site="LU_RB3-P2"/>
       <site site="LU_RB3-P3"/>
@@ -1177,7 +1174,7 @@
       <geom geom="Thirdpm_wrap" sidesite="Thirdpm_site_LU_RB3_side"/>
       <site site="LU_RB3-P5"/>
     </spatial>
-    <spatial class="myohand" name="UI_UB3_tendon" >
+    <spatial   name="UI_UB3_tendon" >
       <site site="UI_UB3-P1"/>
       <site site="UI_UB3-P2"/>
       <site site="UI_UB3-P3"/>
@@ -1185,19 +1182,19 @@
       <geom geom="Thirdpm_wrap" sidesite="Thirdpm_site_UI_UB3_side"/>
       <site site="UI_UB3-P5"/>
     </spatial>
-    <spatial class="myohand" name="RI4_tendon">
+    <spatial   name="RI4_tendon">
       <site site="RI4-P1"/>
       <site site="RI4-P2"/>
       <site site="RI4-P3"/>
     </spatial>
-    <spatial class="myohand" name="LU_RB4_tendon" >
+    <spatial   name="LU_RB4_tendon" >
       <site site="LU_RB4-P1"/>
       <site site="LU_RB4-P2"/>
       <site site="LU_RB4-P3"/>
       <site site="LU_RB4-P4"/>
       <site site="LU_RB4-P5"/>
     </spatial>
-    <spatial class="myohand" name="UI_UB4_tendon" >
+    <spatial   name="UI_UB4_tendon" >
       <site site="UI_UB4-P1"/>
       <site site="UI_UB4-P2"/>
       <geom geom="4thmcp_ellipsoid_wrap" sidesite="4thmcp_ellipsoid_site_UI_UB4_side"/>
@@ -1206,12 +1203,12 @@
       <geom geom="Fourthpm_wrap" sidesite="Fourthpm_site_UI_UB4_side"/>
       <site site="UI_UB4-P5"/>
     </spatial>
-    <spatial class="myohand" name="RI5_tendon" >
+    <spatial   name="RI5_tendon" >
       <site site="RI5-P1"/>
       <site site="RI5-P2"/>
       <site site="RI5-P3"/>
     </spatial>
-    <spatial class="myohand" name="LU_RB5_tendon" >
+    <spatial   name="LU_RB5_tendon" >
       <site site="LU_RB5-P1"/>
       <site site="LU_RB5-P2"/>
       <geom geom="5thmcp_ellipsoid_wrap" sidesite="5thmcp_ellipsoid_site_LU_RB5_side"/>
@@ -1220,7 +1217,7 @@
       <geom geom="Fifthpm_wrap" sidesite="Fifthpm_site_LU_RB5_side"/>
       <site site="LU_RB5-P5"/>
     </spatial>
-    <spatial class="myohand" name="UI_UB5_tendon" >
+    <spatial   name="UI_UB5_tendon" >
       <site site="UI_UB5-P1"/>
       <site site="UI_UB5-P2"/>
       <geom geom="5thmcp_ellipsoid_wrap" sidesite="5thmcp_ellipsoid_site_UI_UB5_side"/>
@@ -1311,6 +1308,4 @@
     <muscle name="LU_RB5" force = "43.9208" range="0.604347 1.40177" lmin="0.503429" lmax="2.98253" fpmax="1.99901" tendon="LU_RB5_tendon" lengthrange="0.0906652 0.102627" class="muscle"/>
     <muscle name="UI_UB5" force = "44.3878" range="0.754553 1.24692" lmin="0.571388" lmax="2.9994" fpmax="1.99511" tendon="UI_UB5_tendon" lengthrange="0.0902183 0.0976038"  class="muscle"/> -->
   </actuator>
-
-
 </mujoco>
