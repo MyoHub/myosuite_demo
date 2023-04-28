@@ -2,7 +2,7 @@
 
 A interactive demonstration of the Musculoskeletal Models of the [MyoSuite](https://github.com/facebookresearch/myoSuite) framework.
 
-This work is forked from [Mujoco_wasm](https://github.com/stillonearth/MuJoCo-WASM) form  [zalo](https://github.com/zalo/mujoco_wasm)
+This work is forked from [Mujoco_wasm](https://github.com/stillonearth/MuJoCo-WASM) and developed with support form  [zalo](https://github.com/zalo/mujoco_wasm) and [Kevin Zakka](https://twitter.com/kevin_zakka)
 
 <!-- # MyoSuite DEMO
 
