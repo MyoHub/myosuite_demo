@@ -432,14 +432,14 @@ export async function loadSceneFromURL(mujoco, filename, parent) {
           color: new THREE.Color(color[0], color[1], color[2]),
           transparent: color[3] < 1.0,
           opacity: color[3],
-          specularIntensity: model.geom_matid[g] != -1 ?       model.mat_specular   [model.geom_matid[g]] * 0.5 : undefined,
+          specularIntensity: model.geom_matid[g] != -1 ?       model.mat_specular   [model.geom_matid[g]] *0.5 : undefined,
           reflectivity     : model.geom_matid[g] != -1 ?       model.mat_reflectance[model.geom_matid[g]] : undefined,
           roughness        : model.geom_matid[g] != -1 ? 1.0 - model.mat_shininess  [model.geom_matid[g]] : undefined,
           metalness        : model.geom_matid[g] != -1 ? 0.1 : undefined,
-          map              : texture
+          map              : texture,
+          side             : THREE.DoubleSide,
         });
       }
-
       let mesh = new THREE.Mesh();
       if (type == 0) {
         mesh = new Reflector( new THREE.PlaneGeometry( 100, 100 ), { clipBias: 0.003, texture: texture } );
@@ -756,7 +756,7 @@ export async function downloadExampleScenesFolder(mujoco) {
           working += "/";
       }
 
-      if (allFiles[i].endsWith(".png") || allFiles[i].endsWith(".stl") || allFiles[i].endsWith(".skn")) {
+      if (allFiles[i].endsWith(".png") || allFiles[i].endsWith(".stl") || allFiles[i].endsWith(".skn") || allFiles[i].endsWith(".mjb")) {
           mujoco.FS.writeFile("/working/" + allFiles[i], new Uint8Array(await responses[i].arrayBuffer()));
       } else {
           mujoco.FS.writeFile("/working/" + allFiles[i], await responses[i].text());
