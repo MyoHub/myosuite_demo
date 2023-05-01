@@ -1,118 +1,44 @@
-/* The MIT License
-
-Copyright © 2010-2023 three.js authors
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-*/
-/* Imported from: https://github.com/kevinzakka/robopianist-demo/blob/main/style.css */
-
 body {
-    margin: 0;
-    background-color: #000;
-    color: #fff;
-    font-family: Monospace;
-    font-size: 13px;
-    line-height: 24px;
-    overscroll-behavior: none;
-  }
+  background-color: #000000;
+  color: #ffffff;
+  font-family: monospace;
+  margin: 0;
 
-  a {
-    /* color: #9e9e9e; */
-    color: #90ee90;
-    text-decoration: none;
-  }
+  touch-action: none;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
 
-  a:hover {
-    text-decoration: underline;
-  }
+a {
+  color: #4599ff;
+  text-decoration: none;
+}
 
-  button {
-    cursor: pointer;
-    text-transform: uppercase;
-  }
+a:hover {
+  text-decoration: underline;
+}
 
-  #info {
-    position: absolute;
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    text-align: center;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    pointer-events: none;
-    z-index: 1; /* TODO Solve this in HTML */
-  }
+.info {
+  box-sizing: border-box;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
 
-  a, button, input, select {
-    pointer-events: auto;
-  }
+.info.top {
+  top: 0px;
+}
 
-  .lil-gui {
-    z-index: 2 !important; /* TODO Solve this in HTML */
-  }
+.info.bottom {
+  bottom: 0px;
+}
 
-  /* Ensure lil-gui does not cover info when width becomes too small */
-  @media all and ( max-width: 640px ) {
-    .lil-gui.root {
-      right: auto;
-      top: auto;
-      max-height: 50%;
-      max-width: 80%;
-      bottom: 40px;
-      left: 0;
-      right: 0;
-      margin: auto;
-    }
-  }
-
-  #overlay {
-    position: absolute;
-    font-size: 16px;
-    z-index: 2;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background: rgba(0,0,0,0.7);
-  }
-
-  #overlay button {
-    background: transparent;
-    border: 0;
-    border: 1px solid rgb(255, 255, 255);
-    border-radius: 4px;
-    color: #ffffff;
-    padding: 12px 18px;
-    text-transform: uppercase;
-    cursor: pointer;
-  }
-
-  #notSupported {
-    width: 50%;
-    margin: auto;
-    background-color: #f00;
-    margin-top: 20px;
-    padding: 10px;
-  }
+.info .shadow {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: inline-block;
+  padding: 0.5rem 1rem;
+}
