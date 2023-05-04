@@ -27,10 +27,11 @@ export function setupGUI(parentContext) {
   // Add scene selection dropdown.
   let reload = reloadFunc.bind(parentContext);
   parentContext.gui.add(parentContext.params, 'scene', {
-    "Hand": "myo_sim/hand/myo_hand_combined.xml",
+    "MyoHand": "myo_sim/hand/myo_hand_combined.xml",
+    "MyoLeg (suspended)":"myo_sim/myolegs/myolegs_v0.5(mj231).mjb",
     // "Elbow": "myo_sim/elbow/myo_elbow_1dof6muscles.xml",
-    "Elbow": "myo_sim/elbow/myo_elbow_combined.xml",
-    "Elbow Exo": "myo_sim/elbow/myo_elbow_exo_combined.xml",
+    "MyoElbow": "myo_sim/elbow/myo_elbow_combined.xml",
+    "MyoElbow Exo": "myo_sim/elbow/myo_elbow_exo_combined.xml",
     "motor_finger_v0": "myo_sim/finger/motor_finger_v0.xml",
     "myo_finger_v0": "myo_sim/finger/myo_finger_v0.xml",
   }).name('Example Scene').onChange(reload);
@@ -743,6 +744,8 @@ export async function downloadExampleScenesFolder(mujoco) {
     "myo_sim/scene/myosuite_scene_noFloor_noPedestal.obj",
     "myo_sim/scene/myosuite_scene_noPedestal.xml",
     "myo_sim/scene/myosuite_warning.png",
+    "myo_sim/scene/myosuite_warning.png",
+    "myo_sim/myolegs/myolegs_v0.5(mj231).mjb",
   ];
 
   let requests = allFiles.map((url) => fetch("./examples/scenes/" + url));
