@@ -3,7 +3,7 @@ import json
 
 _HERE = Path(__file__).parent
 
-_ALLOWED_EXTENSIONS = [".xml", ".png", ".stl", ".obj"]
+_ALLOWED_EXTENSIONS = [".xml", ".png", ".stl", ".obj", ".mjb"]
 
 if __name__ == "__main__":
     files_to_download = []
