@@ -28,6 +28,7 @@ export function setupGUI(parentContext) {
   let reload = reloadFunc.bind(parentContext);
   parentContext.gui.add(parentContext.params, 'scene', {
     "MyoHand": "myo_sim/hand/myo_hand_combined.xml",
+    "MyoHead": "myo_sim/myohead/myohead.xml",
     "MyoLeg (suspended)":"myo_sim/myolegs/myolegs_v0.5(mj231).mjb",
     // "Elbow": "myo_sim/elbow/myo_elbow_1dof6muscles.xml",
     "MyoElbow": "myo_sim/elbow/myo_elbow_combined.xml",
@@ -754,6 +755,23 @@ export async function downloadExampleScenesFolder(mujoco) {
     // "myo_sim/scene/myosuite_scene_noFloor_noPedestal.obj",
     // "myo_sim/scene/myosuite_scene_noPedestal.xml",
     "myo_sim/myolegs/myolegs_v0.5(mj231).mjb",
+
+    "myo_sim/myohead/Geometry/cerv1.stl",
+    "myo_sim/myohead/Geometry/cerv2.stl",
+    "myo_sim/myohead/Geometry/cerv3.stl",
+    "myo_sim/myohead/Geometry/cerv4.stl",
+    "myo_sim/myohead/Geometry/cerv5.stl",
+    "myo_sim/myohead/Geometry/cerv6.stl",
+    "myo_sim/myohead/Geometry/jaw.stl",
+    "myo_sim/myohead/Geometry/lclavicle.stl",
+    "myo_sim/myohead/Geometry/lscapula.stl",
+    "myo_sim/myohead/Geometry/rclavicle.stl",
+    "myo_sim/myohead/Geometry/ribcage.stl",
+    "myo_sim/myohead/Geometry/rotatedcerv7.stl",
+    "myo_sim/myohead/Geometry/rscapula.stl",
+    "myo_sim/myohead/Geometry/skull.stl",
+    "myo_sim/myohead/Geometry/tlspine.stl",
+    "myo_sim/myohead/myohead.xml",
   ];
 
   let requests = allFiles.map((url) => fetch("./examples/scenes/" + url));
